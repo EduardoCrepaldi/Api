@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3>Mãe</h3>
+    </div>
+    <div class="card-body">
+       <table class="table table-hover text-center">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Sobrenome</th>
+              <th>Qtd de Filhos</th>
+              <th>Disponivel</th>
+              <th>Opção</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr *ngFor="let mae of maes" class="text-center">
+              <td>{{mae.id}}</td>
+              <td>{{mae.nome }}</td>
+              <td>{{mae.sobrenome }}</td>
+              <td>{{mae.qtdFilho }}</td>
+              <td>{{mae.disponivel }}</td>
+              <td>
+                <button class="btn btn-warning">
+                  Editar
+                </button>
+                &nbsp;
+                <button class="btn btn-danger">
+                  Deletar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+       </table>
+    </div>
+  </div>
+
+</div>
