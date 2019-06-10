@@ -19,4 +19,16 @@ export class ListarComponent implements OnInit {
     })
   }
 
+  Editar(mae:Mae):void{
+        localStorage.setItem("id",mae.id.toString());
+        this.router.navigate(["edit"]);
+  }
+
+  Deletar(mae:Mae){
+    this.service.deleteMae(mae)
+    .subscribe(data=>{
+      this.maes = this.maes.filter(m=>m!==mae);
+      alert("Mãe: "+mae.nome.valueOf() +" " + mae.sobrenome.valueOf() + " foi excluida!");
+    })
+  }
 }

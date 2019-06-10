@@ -39,39 +39,60 @@ public class MaeController {
         return service.buscarMaes();
     }
 
-    @RequestMapping(method = RequestMethod.GET,  path="/")
-    public Mae findById(@QueryParam("id") long id){
+//    @RequestMapping(method = RequestMethod.GET,  path="/", consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public Mae findById(@QueryParam("id") long id){
+//        return service.findById(id);
+//    }
+
+    @GetMapping(path = "/{id}")
+    public Mae listarID(@PathVariable("id")long id){
         return service.findById(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<String> incluirMae(@RequestBody Mae mae){
-        System.out.println("Entrou com: " + mae.toString());
-        try {
-            return new ResponseEntity<>(service.incluirMae(mae), HttpStatus.OK);
-        } catch(Exception e) {
-            return new ResponseEntity<>(montarObjetoErroResponse(e.getMessage()), HttpStatus.CONFLICT);
-        }
-    }
+//    @RequestMapping(method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+//    public ResponseEntity<String> incluirMae(@RequestBody Mae mae){
+//        System.out.println("Entrou com: " + mae.toString());
+//        try {
+//            return new ResponseEntity<>(service.incluirMae(mae), HttpStatus.OK);
+//        } catch(Exception e) {
+//            return new ResponseEntity<>(montarObjetoErroResponse(e.getMessage()), HttpStatus.CONFLICT);
+//        }
+//    }
 
-    @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> update(@RequestBody Mae mae) {
-        try {
-            return new ResponseEntity<>(service.atualizarMae(mae), HttpStatus.OK);
-        } catch(Exception e) {
-            return new ResponseEntity<>(montarObjetoErroResponse(e.getMessage()), HttpStatus.CONFLICT);
-        }
+    @PostMapping
+    public Mae inserir(@RequestBody Mae mae){
+        return service.incluirMae(mae);
     }
+//    @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<String> update(@RequestBody Mae mae) {
+//        try {
+//            return new ResponseEntity<>(service.atualizarMae(mae), HttpStatus.OK);
+//        } catch(Exception e) {
+//            return new ResponseEntity<>(montarObjetoErroResponse(e.getMessage()), HttpStatus.CONFLICT);
+//        }
+//    }
 
-    @RequestMapping(method = RequestMethod.DELETE)
-    public ResponseEntity<?> delete(@PathVariable long id) {
-        return repository.findById(id)
-                .map(record -> {
-                    service.deletar(id);
-                    return ResponseEntity.ok().build();
-                }).orElse(ResponseEntity.notFound().build());
+    @PutMapping(path = {"/{id}"})
+    public Mae update(@RequestBody Mae mae, @PathVariable("id") long id)
+    {
+        mae.setId(id);
+        System.out.println("Entrou aqui");
+        System.out.println(mae.toString());
+        return service.atualizarMae(mae);
     }
+//    @RequestMapping(method = RequestMethod.DELETE)
+//    public ResponseEntity<?> delete(@PathVariable long id) {
+//        return repository.findById(id)
+//                .map(record -> {
+//                    service.deletar(id);
+//                    return ResponseEntity.ok().build();
+//                }).orElse(ResponseEntity.notFound().build());
+//    }
 
+    @DeleteMapping(path = {"/{id}"})
+    public Mae delete(@PathVariable("id")long id){
+        return service.deletar(id);
+    }
 
     private String montarObjetoErroResponse(String errorDescription) {
         Gson gson = new Gson();

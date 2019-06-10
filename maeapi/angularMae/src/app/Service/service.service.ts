@@ -23,4 +23,16 @@ export class ServiceService {
     // mae.disponivel = true;
     return this.http.post<Mae>(this.Url, mae);
   }
+
+  getMaeId(id:number){
+    return this.http.get<Mae>(this.Url+"/"+id);
+  }
+
+  updateMae(mae:Mae){
+      return this.http.put<Mae>(this.Url+"/"+mae.id,mae);
+  }
+
+  deleteMae(mae:Mae){
+    return this.http.delete<Mae>(this.Url+"/"+mae.id);
+  }
 }

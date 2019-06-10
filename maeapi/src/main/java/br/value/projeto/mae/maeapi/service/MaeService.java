@@ -27,30 +27,45 @@ public class MaeService {
         return maeRepository.findById(id).get();
     }
 
-    public String incluirMae(Mae mae) {
+//    public String incluirMae(Mae mae) {
+//
+//        if(mae != null) {
+//            mae = maeRepository.save(mae);
+//
+//        }else
+//        {
+//            return "Ocorreu um erro, não foi possivel cadastrar";
+//        }
+//
+//        return "Cadastro Efetuado com Sucesso!";
+//    }
+    public Mae incluirMae(Mae mae) {
 
         if(mae != null) {
             mae = maeRepository.save(mae);
-
-        }else
-        {
-            return "Ocorreu um erro, não foi possivel cadastrar";
+            return mae;
         }
-
-        return "Cadastro Efetuado com Sucesso!";
+            return null;
     }
 
-    public String atualizarMae(Mae mae) {
+
+
+    public Mae atualizarMae(Mae mae) {
         if(mae != null) {
             maeRepository.save(mae);
         }else{
-            return "Não foi possivel atualizar a mãe: "  + mae.toString();
+//            return "Não foi possivel atualizar a mãe: "  + mae.toString();
+                return null;
         }
-
-        return "Mae atualizado com Sucesso!";
+        return  mae;
+//        return "Mae atualizado com Sucesso!";
     }
 
-    public void deletar(long id){
-        maeRepository.deleteById(id);
+    public Mae deletar(long id){
+        Mae m = maeRepository.getOne(id);
+        if(m !=null){
+            maeRepository.deleteById(id);
+        }
+        return m;
     }
 }

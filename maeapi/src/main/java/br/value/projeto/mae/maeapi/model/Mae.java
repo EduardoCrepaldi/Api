@@ -18,15 +18,15 @@ public class Mae {
     private String sobrenome;
 
     @Column
-    private int qtd_filho;
+    private int qtdfilho;
 
     @Column
     private boolean disponivel;
 
-    public Mae(String nome, String sobrenome, int qtd_filho, boolean disponivel){
+    public Mae(String nome, String sobrenome, int qtdfilho, boolean disponivel){
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.qtd_filho = qtd_filho;
+        this.qtdfilho = qtdfilho;
         this.disponivel = disponivel;
 
     }
@@ -57,11 +57,11 @@ public class Mae {
     }
 
     public int getQtdFilho() {
-        return qtd_filho;
+        return qtdfilho;
     }
 
     public void setQtdFilho(int qtdFilho) {
-        this.qtd_filho = qtdFilho;
+        this.qtdfilho = qtdFilho;
     }
 
     public boolean isDisponivel() {
@@ -70,5 +70,16 @@ public class Mae {
 
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
+    }
+
+    @Override
+    public String toString() {
+        return "Mae{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", qtdfilho=" + qtdfilho +
+                ", disponivel=" + disponivel +
+                '}';
     }
 }

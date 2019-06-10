@@ -23,11 +23,10 @@
               <td>{{mae.qtdFilho }}</td>
               <td>{{mae.disponivel }}</td>
               <td>
-                <button class="btn btn-warning">
+                <button (click)="Editar(mae)" class="btn btn-warning">
                   Editar
                 </button>
-                &nbsp;
-                <button class="btn btn-danger">
+                <button (click)="Deletar(mae)" class="btn btn-danger" style="margin-left:10px">
                   Deletar
                 </button>
               </td>
