@@ -10,13 +10,13 @@ export class ServiceService {
   constructor(private http:HttpClient) { }
 
   Url='http://localhost:8080/mae';
-  UrlAdd ='http://localhost:8080/mae/add';
   getMaes(){
     return this.http.get<Mae[]>(this.Url);
 
   }
   createMae(mae:Mae){
       console.log("Entrou CreateMaeAngular");
+      console.log(mae);
     // mae.nome = "Nome mãe";
     // mae.qtd_filho = 3;
     // mae.sobrenome ="VaiOK";

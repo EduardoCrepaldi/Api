@@ -22,15 +22,11 @@
         </div>
         
         <div class="form-group">
-          <label for="">Disponivel:</label>
-          &nbsp;
-          <div class="btn-group" role="group" aria-label="Disponivel">
-            <button type="button" class="btn btn-secondary">Sim</button>
-            &nbsp;
-            <button type="button" class="btn btn-secondary">Não</button>
+          <div class="form-group form-check">
+            <input [(ngModel)]="mae.disponivel" name="disponivel" type="checkbox" class="form-check-input" id="disponivel">
+            <label class="form-check-label" for="exampleCheck1">Disponivel</label>
           </div>
-        </div>
-
+      </div>
         <button (click)="Atualizar(mae)" class="btn btn-danger">Salvar</button>
          
        </form>

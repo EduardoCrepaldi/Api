@@ -10,13 +10,19 @@ import { Mae } from 'src/app/Model/Mae';
 })
 export class AddComponent implements OnInit {
 
-  constructor(private router:Router, private service:ServiceService) { }
+  mae:Mae;
+  salvesalve:Boolean;
+
+  constructor(private router:Router, private service:ServiceService) {
+    this.mae = new Mae();
+  }
 
   ngOnInit() {
   }
 
-  Salvar(mae:Mae){
-    this.service.createMae(mae)
+  Salvar(){
+    console.log(this.salvesalve)
+    this.service.createMae(this.mae)
     .subscribe(data=>{
       alert("Mãe cadastrada com Sucesso!");
       this.router.navigate(["listar"]);

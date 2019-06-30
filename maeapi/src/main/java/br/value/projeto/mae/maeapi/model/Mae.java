@@ -1,9 +1,12 @@
 package br.value.projeto.mae.maeapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Mae")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Mae {
 
     @Id
@@ -73,7 +76,7 @@ public class Mae {
     }
 
     @Override
-    public String toString() {
+        public String toString() {
         return "Mae{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +

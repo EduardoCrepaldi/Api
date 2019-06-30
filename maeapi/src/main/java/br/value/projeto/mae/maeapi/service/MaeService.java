@@ -63,9 +63,10 @@ public class MaeService {
 
     public Mae deletar(long id){
         Mae m = maeRepository.getOne(id);
+        Mae m1 = m;
         if(m !=null){
             maeRepository.deleteById(id);
         }
-        return m;
+        return m1;
     }
 }

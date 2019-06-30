@@ -63,6 +63,8 @@ public class MaeController {
     public Mae inserir(@RequestBody Mae mae){
         return service.incluirMae(mae);
     }
+
+
 //    @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseEntity<String> update(@RequestBody Mae mae) {
 //        try {
@@ -90,7 +92,8 @@ public class MaeController {
 //    }
 
     @DeleteMapping(path = {"/{id}"})
-    public Mae delete(@PathVariable("id")long id){
+    public Mae delete(@PathVariable("id")long id)
+    {
         return service.deletar(id);
     }
 
